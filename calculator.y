@@ -1,5 +1,6 @@
 %{
 #include <stdio.h>
+#include <stdlib.h>
 %}
 
 %token DIGITO
@@ -9,10 +10,23 @@ linea : expr '\n' { printf("%d\n", $1); }
       ;
 
 expr  : expr '+' term { $$ = $1 + $3; }
+      | expr '-' term { $$ = $1 - $3; }
       | term
       ;
 
 term  : term '*' factor { $$ = $1 * $3; }
+      | term '/' factor { if ($3 == 0) {
+                              yyerror("Division by zero!");
+                              $$ = 0; 
+                          } else { 
+                              $$ = $1 / $3; 
+                          }}
+      | term '%' factor { if ($3 == 0) {
+                              yyerror("Modulus by zero!");
+                              $$ = 0; 
+                          } else { 
+                              $$ = $1 % $3; 
+                          }}
       | factor
       ;
 
@@ -35,5 +49,6 @@ int main() {
     return 0;
 }
 
+int yylex(void);
 void yywrap() {
 }
