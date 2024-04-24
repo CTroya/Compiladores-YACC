@@ -16,13 +16,13 @@ expr  : expr '+' term { $$ = $1 + $3; }
 
 term  : term '*' factor { $$ = $1 * $3; }
       | term '/' factor { if ($3 == 0) {
-                              yyerror("Division by zero!");
+                              yyerror("No hay division por cero kp");
                               $$ = 0; 
                           } else { 
                               $$ = $1 / $3; 
                           }}
       | term '%' factor { if ($3 == 0) {
-                              yyerror("Modulus by zero!");
+                              yyerror("No hay resto por cero kp");
                               $$ = 0; 
                           } else { 
                               $$ = $1 % $3; 
@@ -42,7 +42,7 @@ int yyerror(char *s) {
 }
 
 int main() {
-    printf("Enter an expression: \n");
+    printf("Ingrese una expresión: \n");
     do {
         printf("> ");
     } while (yyparse());
