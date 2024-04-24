@@ -1,5 +1,5 @@
 
-1. Ejecutar `bison -d calculator.y` para generar `y.tab.h` y `y.tab.c`.
+1. Ejecutar `yacc calculator.y` para generar `y.tab.h` y `y.tab.c`.
 2. Ejecutar `flex calculator.l` para generar `lex.yy.c`.
 3. Compilar ambos archivos C generados con el comando:
    ```
