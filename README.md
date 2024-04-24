@@ -9,3 +9,7 @@
    ```
    ./calculator
    ```
+5. Para probar el y.output de la gramática ambigua, ejecutar
+   ```
+   yacc ./gramAmbigua.y -v
+   ```
