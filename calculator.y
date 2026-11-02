@@ -16,13 +16,13 @@ expr  : expr '+' term { $$ = $1 + $3; }
 
 term  : term '*' factor { $$ = $1 * $3; }
       | term '/' factor { if ($3 == 0) {
-                              yyerror("No hay division por cero kp");
+                              yyerror("division by zero");
                               $$ = 0; 
                           } else { 
                               $$ = $1 / $3; 
                           }}
       | term '%' factor { if ($3 == 0) {
-                              yyerror("No hay resto por cero kp");
+                              yyerror("modulo by zero");
                               $$ = 0; 
                           } else { 
                               $$ = $1 % $3; 
